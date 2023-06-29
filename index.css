@@ -1,0 +1,25 @@
+#set-height, #set-height-2 {
+    display: block;
+  }
+  #v0 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+  p font-family helvetica {
+    font-size: 24px;
+  }
+  #topNav{
+    height: 50px;
+    width: 100%;
+    background-color: aliceblue;
+  }
+
+  .home-slider-container {
+    overflow: auto;
+    background: rgba(0,0,0,.4);
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: .5em 2em;
+  }
