@@ -3424,10 +3424,9 @@ input, select, textarea {
 	z-index: -1;
   }
   
-  @media (max-width: 200px) {
+  @media (max-width: 100px) {
 	  #background-video { display: none; }
 	  body {
-		background: url("https://assets.codepen.io/6093409/river.jpg") no-repeat;
 		background-size: cover;
 	  }
   }
