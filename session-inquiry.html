@@ -24,7 +24,6 @@
 										<li><a href="#menu">Menu</a></li>
 									</ul>
 								</nav>
-
 						</div>
 					</header>
 
@@ -85,18 +84,30 @@
 							</ul>
 						</div>
 					</footer>
-
 			</div>
 
 		<!-- Scripts -->
 			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+			<script src="https://smtpjs.com/v3/smtp.js"></script>
 			<script>
 				$( document ).ready(function() {
 					//email script
 					$("#send").on( "click", function() {
-  						alert("on click working");
+						var fromEmail = $("#email").val();
+						Email.send({
+    					SecureToken : "9515bac2-1ed1-4044-9fc5-d6cda2c6aa1b",
+    					To : 'zacthomas86@gmail.com',
+    					From : 'inquiry@ashleekittilson.photography',
+   						Subject : "This is the subject",
+    					Body : "And this is the body",
+						message: "success!",
+						//add optional photo attachments
+						}).then(
+  							message => alert(message)
+						);
 					});
 				});
+
 			</script>
 	</body>
 </html>
