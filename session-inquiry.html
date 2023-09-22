@@ -61,6 +61,9 @@
 											<input type="email" name="email" id="email" placeholder="Email (required)" required="true" />
 										</div>
 										<div class="field">
+											<input type="tel" name="phone" id="phone" placeholder="phone number (required)" required="true" />
+										</div>
+										<div class="field">
 											<textarea name="message" id="message" placeholder="Additional Details / Questions:"></textarea>
 										</div>
 									</div>
@@ -90,24 +93,47 @@
 			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 			<script src="https://smtpjs.com/v3/smtp.js"></script>
 			<script>
+				function generateEmailBody(){
+					var firstName = $("#firstName").val();
+					var lastName = $("#lastName").val();
+					var fromEmail = $("#email").val();
+					var phoneNumber = $("#phone").val();
+					var additionalInfo = $("#message").val();
+					var concat = 
+					"Name: " + firstName+ " "+ lastName+"\n" +
+					"Email: " + fromEmail+"\n" +
+					"Phone Number: "+phoneNumber+"\n" +
+					"Additional Info: " + additionalInfo;
+					return concat;
+				}
+				function generateEmailSubject(){
+					var firstName = $("#firstName").val();
+					var lastName = $("#lastName").val();
+					return "Session Inquiry: " +firstName+" "+lastName;
+				}
 				$( document ).ready(function() {
 					//email script
 					$("#send").on( "click", function() {
+						var firstName = $("#firstName").val();
+						var lastName = $("#lastName").val();
 						var fromEmail = $("#email").val();
+						var phoneNumber = $("#phone").val();
+						var additionalInfo = $("#message").val();
 						Email.send({
     					SecureToken : "9515bac2-1ed1-4044-9fc5-d6cda2c6aa1b",
     					To : 'zacthomas86@gmail.com',
     					From : 'inquiry@ashleekittilson.photography',
-   						Subject : "This is the subject",
-    					Body : "And this is the body",
-						message: "success!",
+   						Subject : generateEmailSubject(),
+    					Body :"Name: " + firstName+ " "+ lastName+"\n" +
+						"Email: " + fromEmail+"\n" +
+						"Phone Number: "+phoneNumber+"\n" +
+						"Additional Info: " + additionalInfo,
 						//add optional photo attachments
 						}).then(
   							message => alert(message)
 						);
 					});
 				});
-
 			</script>
 	</body>
 </html>
