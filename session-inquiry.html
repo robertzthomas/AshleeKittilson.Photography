@@ -10,22 +10,20 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
 	<body class="is-preload">
-		<!-- Wrapper -->
+				<!-- Wrapper -->
 			<div id="wrapper">
 
 				<!-- Header -->
 					<header id="header">
 						<div class="inner">
 							<!-- Nav -->
-								<nav>
-									<ul>
-										<li><a href="#menu">Menu</a></li>
-									</ul>
-								</nav>
-
+							<nav>
+								<ul>
+									<li><a href="#menu">Menu</a></li>
+								</ul>
+							</nav>
 						</div>
 					</header>
 
@@ -44,8 +42,6 @@
 					<div id="main">
 						<div class="inner">
 							<h1>Session Inquiry</h1>
-							<p> </p>
-
 						</div>
 					</div>
 
@@ -53,51 +49,157 @@
 					<footer id="footer">
 						<div class="inner">
 							<section>
-								<h2>Get in touch</h2>
-								<form method="post" action="#">
+								<form method="post" >
 									<div class="fields">
 										<div class="field half">
-											<input type="text" name="name" id="name" placeholder="Name" />
+											<input type="text" name="First Name" id="firstName" placeholder="First Name (required)" required="true" />
 										</div>
 										<div class="field half">
-											<input type="email" name="email" id="email" placeholder="Email" />
+											<input type="text" name="last name" id="lastName" placeholder="Last Name (required)" required="true" />
 										</div>
 										<div class="field">
-											<textarea name="message" id="message" placeholder="Message"></textarea>
+											<input type="email" name="email" id="email" placeholder="Email (required)" required="true" />
+										</div>
+										<div class="field">
+											<input type="tel" name="phone" id="phone" placeholder="phone number (required)" required="true" />
+										</div>
+										<div class="field half">
+											<select id="sessionType" required="true">
+												<option selected disabled value="">Session Type</option>
+												<option value="Family">Family</option>
+												<option value="Birthday">Birthday</option>
+												<option value="Cake Smash">Cake Smash</option>
+												<option value="Wedding">Wedding</option>
+												<option value="Maternity">Maternity</option>
+												<option value="Newborn">Newborn</option>
+												<option value="Senior Pics">Senior Pics</option>
+												<option value="Portrait">Portrait</option>
+												<option value="Other">Other</option>
+											</select>
+											<div class="field half" style="display: none;">
+												<input type="text" name="session type" id="sessionType" placeholder="Session Type (required)" />
+											</div>
+										</div>
+										<div class="field half">
+											<select id="sessionSize">
+												<option selected disabled value="">Session Size</option>
+												<option value="mini"><b>mini:</b> (15-20 minutes) $150</option>
+												<option value="full"><b>full:</b> (2hrs max) $299</option>
+											</select>
+										</div>
+										<div class="field half">
+											<input type="text" name="people" id="people" placeholder="number of people (required)" required="true" />
+										</div>
+										<div class="field">
+											<label for="attachment">Insparational Photos:</label>
+											<table>
+												<tr>
+													<td style="border: 1px solid black; border-radius: 50px;">
+														<input type="file" id="attachment" name="attachment" accept="image/*" multiple onchange="readFile();">
+														<img src="" height="200" alt="Image preview" />
+													</td>
+												</tr>
+											</table>
+											
+										</div>
+										<div class="field">
+											<textarea name="message" id="message" placeholder="Additional Details / Questions:"></textarea>
 										</div>
 									</div>
 									<ul class="actions">
-										<li><input type="submit" value="Send" class="primary" /></li>
+										<li><input type="submit" value="Send" class="primary" id="send" onclick="sendEmail()"/></li>
 									</ul>
 								</form>
 							</section>
 							<section>
 								<h2>Follow</h2>
 								<ul class="icons">
-									<li><a href="#" class="icon brands style2 fa-twitter"><span class="label">Twitter</span></a></li>
-									<li><a href="#" class="icon brands style2 fa-facebook-f"><span class="label">Facebook</span></a></li>
-									<li><a href="#" class="icon brands style2 fa-instagram"><span class="label">Instagram</span></a></li>
-									<li><a href="#" class="icon brands style2 fa-dribbble"><span class="label">Dribbble</span></a></li>
-									<li><a href="#" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
-									<li><a href="#" class="icon brands style2 fa-500px"><span class="label">500px</span></a></li>
-									<li><a href="#" class="icon solid style2 fa-phone"><span class="label">Phone</span></a></li>
-									<li><a href="#" class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li>
+									<li><a href="https://www.facebook.com/profile.php?id=100053286050040" target="_blank" class="icon brands style2 fa-facebook-f"><span class="label">Facebook</span></a></li>
+									<li><a href="https://www.instagram.com/ashleekittilsonphotography/" target="_blank" class="icon brands style2 fa-instagram"><span class="label">Instagram</span></a></li>
 								</ul>
 							</section>
 							<ul class="copyright">
-								<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+								<li>&copy; Untitled. All rights reserved</li>
 							</ul>
 						</div>
 					</footer>
-
 			</div>
-
 		<!-- Scripts -->
+			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+			<script src="https://smtpjs.com/v3/smtp.js"></script>
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/browser.min.js"></script>
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script>
+				function generateEmailBody(){
+					var firstName = $("#firstName").val();
+					var lastName = $("#lastName").val();
+					var fromEmail = $("#email").val();
+					var phoneNumber = $("#phone").val();
+					var sessionType = $("#sessionType").val();
+					var sessionSize = $("#sessionSize").val();
+					var additionalInfo = $("#message").val();
+					//var attachment = document.querySelector("img");
+					//var attachment = $("#attachment").val();
 
+					var concat = 
+					"<html>"+
+					"<body>"+
+					"Name: " + firstName+ " "+ lastName+"<br>" +
+					"Email: " + fromEmail+"<br>" +
+					"Phone Number: "+phoneNumber+"<br>" +
+					"Session Type: "+sessionType+"<br>" +
+					"Session Size: "+sessionSize+"<br>" +
+					"Additional Info: " + "<br>"+ additionalInfo +
+					"</body>"+
+					+"</html>";
+					return concat;
+				}
+				function generateEmailSubject(){
+					var firstName = $("#firstName").val();
+					var lastName = $("#lastName").val();
+					return "Session Inquiry: " +firstName+" "+lastName;
+				}
+				async function sendEmail(){
+					var firstName = $("#firstName").val();
+					var lastName = $("#lastName").val();
+					var fromEmail = $("#email").val();
+					var phoneNumber = $("#phone").val();
+					var additionalInfo = $("#message").val();
+					var attachment = document.querySelector("img");
+					var email = "zacthomas86@gmail.com";
+					var realEmail = "AshleeKittilsonPhotography@gmail.com";
+					var message = "An Inquiry Email Has Been Sent. We Will Reach Out Within 24hrs";
+					Email.send({
+    					SecureToken : "9515bac2-1ed1-4044-9fc5-d6cda2c6aa1b",
+    					To : email,
+    					From : 'inquiry@ashleekittilson.photography',
+   						Subject : generateEmailSubject(),
+    					Body : generateEmailBody(),
+					})
+					window.alert(message);
+				}
+
+				function readFile(){
+					var attachment = document.querySelector('input[type=file]').files[0];
+					var preview = document.querySelector("img");
+					let reader = new FileReader();
+					var dataURL;
+					reader.addEventListener(
+						"load",
+						()=> {
+							preview.src = reader.result;
+						},
+						false,
+					);
+					if(attachment){
+						reader.readAsDataURL(attachment);
+					}
+				}
+				$( document ).ready(function() {
+				});
+			</script>
 	</body>
 </html>
