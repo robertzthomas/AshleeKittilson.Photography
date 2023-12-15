@@ -22,8 +22,8 @@
 		<div id="wrapper">
 			<!-- Header -->
 			<header id="header">
-				<video id="background-video" autoplay loop muted poster="media/Header.jpg">
-					<source src="images/still1.PNG" type="image">
+				<video id="background-video" autoplay loop muted poster="media/Header 2.PNG">
+					<source src="media/Header 2.PNG" type="image">
 				  </video>
 				<div class="sideBySideParent" >
 					<!-- Nav -->
@@ -69,9 +69,6 @@
 									</span>
 									<div class="overlay">
 										<h2>Portraits</h2>
-										<div class="content">
-											<p>Gallery Short Description</p>
-										</div>
 										<a class="prev" onclick="changeSlide(this,false)">&#10094;</a>
   										<a class="next" onclick="changeSlide(this,true)">&#10095;</a>
 									</div>
@@ -85,9 +82,6 @@
 									</span>
 									<div class="overlay">
 										<h2>Wedding</h2>
-										<div class="content">
-											<p>Gallery Short Description</p>
-										</div>
 										<a class="prev" onclick="changeSlide(this,false)">&#10094;</a>
   										<a class="next" onclick="changeSlide(this,true)">&#10095;</a>
 									</div>
@@ -101,9 +95,6 @@
 									</span>
 									<div class="overlay">
 										<h2>Maternity</h2>
-										<div class="content">
-											<p>Gallery Short Description</p>
-										</div>
 										<a class="prev" onclick="changeSlide(this,false)">&#10094;</a>
   										<a class="next" onclick="changeSlide(this,true)">&#10095;</a>
 									</div>
@@ -116,10 +107,7 @@
 										<img src="media/sample pics/7.PNG" alt="" style="display: none;" />
 									</span>
 									<div class="overlay">
-										<h2>Senior Pics</h2>
-										<div class="content">
-											<p>Gallery Short Description</p>
-										</div>
+										<h2>Senior</h2>
 										<a class="prev" onclick="changeSlide(this,false)">&#10094;</a>
   										<a class="next" onclick="changeSlide(this,true)">&#10095;</a>
 									</div>
@@ -133,9 +121,6 @@
 									</span>
 									<div class="overlay">
 										<h2>Newborn</h2>
-										<div class="content">
-											<p>Gallery Short Description</p>
-										</div>
 										<a class="prev" onclick="changeSlide(this,false)">&#10094;</a>
   										<a class="next" onclick="changeSlide(this,true)">&#10095;</a>
 									</div>
@@ -149,9 +134,6 @@
 									</span>
 									<div class="overlay">
 										<h2>Birthday</h2>
-										<div class="content">
-											<p>Gallery Short Description</p>
-										</div>
 										<a class="prev" onclick="changeSlide(this,false)">&#10094;</a>
   										<a class="next" onclick="changeSlide(this,true)">&#10095;</a>
 									</div>
@@ -164,10 +146,46 @@
 										<img src="media/sample pics/6.PNG" alt="" style="display: none;" />
 									</span>
 									<div class="overlay">
-										<h2>Misc</h2>
-										<div class="content">
-											<p>Gallery Short Description</p>
-										</div>
+										<h2>Other</h2>
+										<a class="prev" onclick="changeSlide(this,false)">&#10094;</a>
+  										<a class="next" onclick="changeSlide(this,true)">&#10095;</a>
+									</div>
+								</article>
+
+								<article class="style2">
+									<span class="image">
+										<img src="media/sample pics/6.PNG" alt="" />
+										<img src="media/sample pics/6.PNG" alt="" style="display: none;" />
+										<img src="media/sample pics/6.PNG" alt="" style="display: none;" />
+									</span>
+									<div class="overlay">
+										<h2>Branding</h2>
+										<a class="prev" onclick="changeSlide(this,false)">&#10094;</a>
+  										<a class="next" onclick="changeSlide(this,true)">&#10095;</a>
+									</div>
+								</article>
+
+								<article class="style2">
+									<span class="image">
+										<img src="media/sample pics/6.PNG" alt="" />
+										<img src="media/sample pics/6.PNG" alt="" style="display: none;" />
+										<img src="media/sample pics/6.PNG" alt="" style="display: none;" />
+									</span>
+									<div class="overlay">
+										<h2>Boudoir</h2>
+										<a class="prev" onclick="changeSlide(this,false)">&#10094;</a>
+  										<a class="next" onclick="changeSlide(this,true)">&#10095;</a>
+									</div>
+								</article>
+
+								<article class="style2">
+									<span class="image">
+										<img src="media/sample pics/6.PNG" alt="" />
+										<img src="media/sample pics/6.PNG" alt="" style="display: none;" />
+										<img src="media/sample pics/6.PNG" alt="" style="display: none;" />
+									</span>
+									<div class="overlay">
+										<h2>Headshots</h2>
 										<a class="prev" onclick="changeSlide(this,false)">&#10094;</a>
   										<a class="next" onclick="changeSlide(this,true)">&#10095;</a>
 									</div>
@@ -179,13 +197,14 @@
 									</span>
 									<div class="overlay content">
 										<a href="https://ashleekittilson6975.smugmug.com/" target="_blank">
-											<h2 style="color: black;">SEE FULL GALLERY</h2>
+											<h2 style="color: black;">SEE PORTFOLIO</h2>
 											<div class="content">
-												<p style="color: black;">Click to view entire collection</p>
+												<p style="color: black;">Click to view</p>
 											</div>
 										</a>
 									</div>
 								</article>
+
 							</section>
 						</div>
 					</div>
@@ -223,30 +242,34 @@
 					var $slides = $("#" + currentArticleId);
 					var allImages = $slides.find("img");
 					var elementToShow;
-					//elementToShow = positive ? "image_1" : "image_3";
 					var sequence;
-					var triggerReset = false;
 					$.each(allImages, function(key, value){
 						if(value.getAttribute("style") == ""){
 							sequence = value.className.split("_")[1];
-							value.setAttribute("style", "display: none");
+							//value.setAttribute("style", "display: none");
 							if(positive){
 								var plusSequence = +sequence + +1;
 								elementToShow = sequence == 3 ? "image_1" : "image_" + plusSequence;
-								var yes = "yes";
 							}else{
 								var minusSequence = +sequence - +1;
 								elementToShow = sequence == 1 ? "image_3" : "image_" + minusSequence;
-								var yes = "yes";
 							}
-						}else if(elementToShow == value.className){
-							value.setAttribute("style", "");
-						}else if(positive && elementToShow == "image_1"){
-							$(".image_1").setAttribute("style", "");
-						}else if(!positive &&  elementToShow == "image_3"){
-							$(".image_3").setAttribute("style", "");
+							return false;
 						}
 					});
+					if(elementToShow == "image_1"){
+						document.querySelector("#article_1 .image_1").setAttribute("style", "");//show
+						document.querySelector("#article_1 .image_2").setAttribute("style", "display: none");
+						document.querySelector("#article_1 .image_3").setAttribute("style", "display: none");
+					}else if(elementToShow == "image_2"){
+						document.querySelector("#article_1 .image_1").setAttribute("style", "display: none");
+						document.querySelector("#article_1 .image_2").setAttribute("style", "");//show
+						document.querySelector("#article_1 .image_3").setAttribute("style", "display: none");
+					}else if(elementToShow == "image_3"){
+						document.querySelector("#article_1 .image_1").setAttribute("style", "display: none");
+						document.querySelector("#article_1 .image_2").setAttribute("style", "display: none");
+						document.querySelector("#article_1 .image_3").setAttribute("style", "");//show
+					}
 				}
 			</script>
 	</body>

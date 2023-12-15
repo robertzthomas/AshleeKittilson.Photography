@@ -1,7 +1,7 @@
 @import url(fontawesome-all.min.css);
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,700,900");
 @import url('https://fonts.cdnfonts.com/css/butterscotch');
-@import url('https://fonts.cdnfonts.com/css/chelsea-olivia');
+@import url('/assets/css/QaskinWhitePersonalUse-67XD.ttf');
 
 /*
 	Phantom by HTML5 UP
@@ -2797,7 +2797,7 @@ input, select, textarea {
 			width: 100%;
 			margin-top: 3em;
 			text-align: center;
-			font-family: 'Chelsea Olivia', sans-serif;
+			font-family: url('/assets/css/QaskinWhitePersonalUse-67XD.ttf');
 		}
 		#AKP{
 			margin-bottom: 1em;
@@ -3397,7 +3397,7 @@ input, select, textarea {
 		  /* video background */
 #background-video {
 	background-color: rgba(222, 231, 160, 0.973);
-	
+	transform: scaleX(1) scaleY(1);
 	width: 100vw;
 	object-fit: cover;
 	position: fixed;
