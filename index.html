@@ -63,9 +63,15 @@
 
 								<article class="style2" id="article_1">
 									<span class="image">
-										<img src="media/sample pics/0.PNG" alt="" class="image_1" style=""/>
-										<img src="media/sample pics/2.PNG" alt="" class="image_2" style="display: none;" />
-										<img src="media/sample pics/3.PNG" alt="" class="image_3" style="display: none;" />
+										<img src="media/sample pics/0.PNG" alt="" class="photo" id="image_1" style=""/>
+										<img src="media/sample pics/2.PNG" alt="" class="photo" id="image_2" style="display: none;" />
+										<img src="media/sample pics/3.PNG" alt="" class="photo" id="image_3" style="display: none;" />
+										<img src="media/sample pics/4.PNG" alt="" class="photo" id="image_4" style="display: none;" />
+										<img src="media/sample pics/5.PNG" alt="" class="photo" id="image_5" style="display: none;" />
+										<img src="media/sample pics/6.PNG" alt="" class="photo" id="image_6" style="display: none;" />
+										<img src="media/sample pics/7.PNG" alt="" class="photo" id="image_7" style="display: none;" />
+										<img src="media/sample pics/8.PNG" alt="" class="photo" id="image_8" style="display: none;" />
+										<img src="media/sample pics/9.PNG" alt="" class="photo" id="image_9" style="display: none;" />
 									</span>
 									<div class="overlay">
 										<h2>Portraits</h2>
@@ -239,37 +245,39 @@
 			<script>
 				function changeSlide(element, positive){
 					var currentArticleId = element.closest(".style2").id;
-					var $slides = $("#" + currentArticleId);
-					var allImages = $slides.find("img");
-					var elementToShow;
+					var $slides = $("#" + currentArticleId); //I think the $ in front of the var name forces type = element for JQuery
+					var allImages = $slides.find("img"); // array/list of image elements
+					var elementToShow = "";
 					var sequence;
+					var imageAmount = 0;
+					var imageCountParam = "#" + currentArticleId;
+					var imageCount = document.querySelector(imageCountParam).getElementsByClassName("photo").length;
 					$.each(allImages, function(key, value){
 						if(value.getAttribute("style") == ""){
-							sequence = value.className.split("_")[1];
-							//value.setAttribute("style", "display: none");
-							if(positive){
-								var plusSequence = +sequence + +1;
-								elementToShow = sequence == 3 ? "image_1" : "image_" + plusSequence;
-							}else{
-								var minusSequence = +sequence - +1;
-								elementToShow = sequence == 1 ? "image_3" : "image_" + minusSequence;
+							//find out what field to show which also lets us know what to hide
+							sequence = value.id.split("_")[1]; //split the id to get numeric sequence
+							if(positive){ //handle next button
+								var plusSequence = +sequence + +1; //get sequence we are looking to show
+								elementToShow = plusSequence - 1 == imageCount ? "image_1" : "image_" + plusSequence; //set sequence we are looking to show
+							}else{ //handle previous button
+								var minusSequence = +sequence - +1; //get sequence we are looking to show
+								elementToShow = minusSequence == 0 ? "image_" + String(imageCount) : "image_" + minusSequence; //set sequence we are looking to show
 							}
-							return false;
+							return false; //break loop now that we have found what to show
 						}
+						//dont put anything here retard
 					});
-					if(elementToShow == "image_1"){
-						document.querySelector("#article_1 .image_1").setAttribute("style", "");//show
-						document.querySelector("#article_1 .image_2").setAttribute("style", "display: none");
-						document.querySelector("#article_1 .image_3").setAttribute("style", "display: none");
-					}else if(elementToShow == "image_2"){
-						document.querySelector("#article_1 .image_1").setAttribute("style", "display: none");
-						document.querySelector("#article_1 .image_2").setAttribute("style", "");//show
-						document.querySelector("#article_1 .image_3").setAttribute("style", "display: none");
-					}else if(elementToShow == "image_3"){
-						document.querySelector("#article_1 .image_1").setAttribute("style", "display: none");
-						document.querySelector("#article_1 .image_2").setAttribute("style", "display: none");
-						document.querySelector("#article_1 .image_3").setAttribute("style", "");//show
+					for(var i = 1; i <= imageCount; i++){
+						var imageID = "image_" + String(i);
+						if(imageID == elementToShow){
+							document.getElementById(imageID).setAttribute("style", "");
+						}else{
+							document.getElementById(imageID).setAttribute("style", "display: none");
+						}
 					}
+				}
+				function hideOtherImages(){
+
 				}
 			</script>
 	</body>
