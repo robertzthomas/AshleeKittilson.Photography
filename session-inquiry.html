@@ -16,7 +16,7 @@
 			<div id="wrapper">
 
 				<!-- Header -->
-					<header id="header">
+					<header id="header" style="background-color:  #d0c5b8;">
 						<div class="inner">
 							<!-- Nav -->
 							<nav>
@@ -33,8 +33,8 @@
 						<ul>
 							<li><a href="index.html">Home</a></li>
 							<li title="schedule a session"><a href="session-inquiry.html">Session Inquiry</a></li>
-							<li title="quetions, comments, concerns"><a href="session-inquiry.html">General Inquiry</a></li>
-							<li title="Previous Sessions"><a href="generic.html">Gallary</a></li>
+							<li title="quetions, comments, concerns"><a href="coming-soon.html">Merch (Coming Soon)</a></li>
+							<li title="View Entire Collection"><a href="https://ashleekittilson6975.smugmug.com/" target="_blank">Portfolio</a></li>
 						</ul>
 					</nav>
 
@@ -46,7 +46,7 @@
 					</div>
 
 				<!-- Footer -->
-					<footer id="footer">
+					<footer id="footer" class="main">
 						<div class="inner">
 							<section>
 								<form method="post" >
@@ -90,7 +90,7 @@
 										<div class="field half">
 											<input type="text" name="people" id="people" placeholder="number of people (required)" required="true" />
 										</div>
-										<div class="field">
+										<div class="field" style="display: none;">
 											<label for="attachment">Insparational Photos:</label>
 											<table>
 												<tr>
@@ -103,7 +103,7 @@
 											
 										</div>
 										<div class="field">
-											<textarea name="message" id="message" placeholder="Additional Details / Questions:"></textarea>
+											<textarea name="message" id="message" placeholder="Additional Details & Questions:"></textarea>
 										</div>
 									</div>
 									<ul class="actions">
@@ -116,6 +116,7 @@
 								<ul class="icons">
 									<li><a href="https://www.facebook.com/profile.php?id=100053286050040" target="_blank" class="icon brands style2 fa-facebook-f"><span class="label">Facebook</span></a></li>
 									<li><a href="https://www.instagram.com/ashleekittilsonphotography/" target="_blank" class="icon brands style2 fa-instagram"><span class="label">Instagram</span></a></li>
+									<li><a href="https://maps.app.goo.gl/gujwrjFSVhMn9Rbu8?g_st=ic" target="_blank" class="fa fa-map-marker" id="gps"><span class="label"></span></a></li>
 								</ul>
 							</section>
 							<ul class="copyright">
@@ -174,7 +175,7 @@
 					var message = "An Inquiry Email Has Been Sent. We Will Reach Out Within 24hrs";
 					Email.send({
     					SecureToken : "9515bac2-1ed1-4044-9fc5-d6cda2c6aa1b",
-    					To : email,
+    					To : realEmail,
     					From : 'inquiry@ashleekittilson.photography',
    						Subject : generateEmailSubject(),
     					Body : generateEmailBody(),
