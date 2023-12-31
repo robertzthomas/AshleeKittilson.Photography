@@ -11,6 +11,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<link rel="icon" type="image/x-icon" href="media/icon-square.ico">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap">
 	</head>
 	<body class="is-preload">
 				<!-- Wrapper -->
@@ -42,7 +43,7 @@
 				<!-- Main -->
 					<div id="main">
 						<div class="inner">
-							<h1>Session Inquiry</h1>
+							<h1 style="color: black;">Session Inquiry</h1>
 						</div>
 					</div>
 
@@ -112,14 +113,17 @@
 									</ul>
 								</form>
 							</section>
-							<section>
-								<h2>Follow</h2>
-								<ul class="icons">
-									<li><a href="https://www.facebook.com/profile.php?id=100053286050040" target="_blank" class="icon brands style2 fa-facebook-f"><span class="label">Facebook</span></a></li>
-									<li><a href="https://www.instagram.com/ashleekittilsonphotography/" target="_blank" class="icon brands style2 fa-instagram"><span class="label">Instagram</span></a></li>
-									<li><a href="https://maps.app.goo.gl/gujwrjFSVhMn9Rbu8?g_st=ic" target="_blank" class="fa fa-map-marker" id="gps"><span class="label"></span></a></li>
-								</ul>
-							</section>
+
+							<div style="margin-top: 15px; margin-left: 15px;">
+								<section  style="display: inline;">
+									<h2>Follow</h2>
+									<ul class="icons">
+										<li><a href="https://www.facebook.com/profile.php?id=100053286050040" target="_blank" class="icon brands style2 fa-facebook-f"><span class="label">Facebook</span></a></li>
+										<li><a href="https://www.instagram.com/ashleekittilsonphotography/" target="_blank" class="icon brands style2 fa-instagram"><span class="label">Instagram</span></a></li>
+										<li><a href="https://maps.app.goo.gl/gujwrjFSVhMn9Rbu8?g_st=ic" target="_blank" class="fa fa-map-marker" id="gps"><span class="label"></span></a></li>
+									</ul>
+								</section>
+							</div>
 							<ul class="copyright">
 								<li>&copy; Untitled. All rights reserved</li>
 							</ul>
@@ -134,7 +138,7 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-			<script>
+			<script defer>
 				function generateEmailBody(){
 					var firstName = $("#firstName").val();
 					var lastName = $("#lastName").val();
@@ -171,7 +175,6 @@
 					var phoneNumber = $("#phone").val();
 					var additionalInfo = $("#message").val();
 					var attachment = document.querySelector("img");
-					var email = "zacthomas86@gmail.com";
 					var realEmail = "AshleeKittilsonPhotography@gmail.com";
 					var message = "An Inquiry Email Has Been Sent. We Will Reach Out Within 24hrs\nNOTICE: please have some inspirational photos handy when we reach out as these are very helpful.\nPhoto attachments will be coming back to the website shortly & we are sorry for any inconvenience";
 					Email.send({
